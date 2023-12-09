@@ -1,12 +1,22 @@
 const left = document.querySelector(".left");
 const right = document.querySelector(".right");
 const h1 = document.querySelector(".h1");
-const Your_Best_Score = document.querySelector("p");
+const Your_Best_Score = document.querySelector(".Your-Best-Score");
+var span = document.querySelector("span");
 Your_Best_Score.innerHTML =
-  "Your Best Score: " + localStorage.getItem("Best Score");
+  localStorage.getItem("Best Score");
 if (localStorage.getItem("Best Score") == null) {
-  Your_Best_Score.innerHTML = "Your Best Score: ";
+  Your_Best_Score.innerHTML = "";
 }
+if (Your_Best_Score.innerHTML == "200") {
+  Your_Best_Score.style.color = "green";
+}
+
+if (Your_Best_Score.innerHTML == "404") {
+  Your_Best_Score.style.color = "red";
+}
+
+
 
 let leftCounter = 0;
 let rightCounter = 0;
@@ -40,8 +50,16 @@ document.addEventListener("click", function () {
   ) {
     bigger_number = leftCounter;
     localStorage.setItem("Best Score", bigger_number);
-    Your_Best_Score.innerText =
-      "Your Best Score: " + localStorage.getItem("Best Score");
+    Your_Best_Score.innerText = localStorage.getItem("Best Score");
+  }
+  if (localStorage.getItem("Best Score") == 200) {
+    Your_Best_Score.style.color = "green";
+  }
+  else if (localStorage.getItem("Best Score") == 404) {
+    Your_Best_Score.style.color = "red";
+  }
+  else {
+    Your_Best_Score.style.color = "white";
   }
 });
 
@@ -71,8 +89,16 @@ document.addEventListener("contextmenu", event => {
   ) {
     bigger_number = rightCounter;
     localStorage.setItem("Best Score", bigger_number);
-    Your_Best_Score.innerText =
-      "Your Best Score: " + localStorage.getItem("Best Score");
+    Your_Best_Score.innerText = localStorage.getItem("Best Score");
+  }
+  if (Your_Best_Score.innerHTML == 200) {
+    Your_Best_Score.style.color = "green";
+  }
+  else if (Your_Best_Score.innerHTML == 404) {
+    Your_Best_Score.style.color = "red";
+  }
+  else {
+    Your_Best_Score.style.color = "white";
   }
 });
 
