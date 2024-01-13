@@ -3,20 +3,19 @@ const right = document.querySelector(".right");
 const h1 = document.querySelector(".h1");
 const Your_Best_Score = document.querySelector(".Your-Best-Score");
 var span = document.querySelector("span");
-Your_Best_Score.innerHTML =
-  localStorage.getItem("Best Score");
+Your_Best_Score.innerHTML = localStorage.getItem("Best Score");
 if (localStorage.getItem("Best Score") == null) {
   Your_Best_Score.innerHTML = "";
 }
 if (Your_Best_Score.innerHTML == "200") {
   Your_Best_Score.style.color = "green";
 }
-
+if (Your_Best_Score.innerHTML == "301") {
+  Your_Best_Score.style.color = "orange";
+}
 if (Your_Best_Score.innerHTML == "404") {
   Your_Best_Score.style.color = "red";
 }
-
-
 
 let leftCounter = 0;
 let rightCounter = 0;
@@ -36,6 +35,9 @@ document.addEventListener("click", function () {
   if (leftCounter == 200) {
     left.style.color = "green";
   }
+  if (leftCounter == 301) {
+    left.style.color = "orange";
+  }
   if (leftCounter == 404) {
     left.style.color = "red";
   }
@@ -54,11 +56,11 @@ document.addEventListener("click", function () {
   }
   if (localStorage.getItem("Best Score") == 200) {
     Your_Best_Score.style.color = "green";
-  }
-  else if (localStorage.getItem("Best Score") == 404) {
+  } else if (localStorage.getItem("Best Score") == 301) {
+    Your_Best_Score.style.color = "orange";
+  } else if (localStorage.getItem("Best Score") == 404) {
     Your_Best_Score.style.color = "red";
-  }
-  else {
+  } else {
     Your_Best_Score.style.color = "white";
   }
 });
@@ -74,6 +76,9 @@ document.addEventListener("contextmenu", event => {
   console.log("Right click:", rightCounter);
   if (rightCounter == 200) {
     right.style.color = "green";
+  }
+  if (rightCounter == 301) {
+    right.style.color = "orange";
   }
   if (rightCounter == 404) {
     right.style.color = "red";
@@ -93,11 +98,11 @@ document.addEventListener("contextmenu", event => {
   }
   if (Your_Best_Score.innerHTML == 200) {
     Your_Best_Score.style.color = "green";
-  }
-  else if (Your_Best_Score.innerHTML == 404) {
+  } else if (localStorage.getItem("Best Score") == 301) {
+    Your_Best_Score.style.color = "orange";
+  } else if (Your_Best_Score.innerHTML == 404) {
     Your_Best_Score.style.color = "red";
-  }
-  else {
+  } else {
     Your_Best_Score.style.color = "white";
   }
 });
@@ -109,19 +114,18 @@ function celebrate() {
     gravity: 0,
     decay: 0.94,
     startVelocity: 35,
+    particleCount: 50,
   };
 
   function shoot() {
     confetti({
       ...defaults,
-      particleCount: 50,
       scalar: 1.2,
       shapes: ["star"],
     });
 
     confetti({
       ...defaults,
-      particleCount: 50,
       scalar: 0.75,
       shapes: ["circle"],
     });
