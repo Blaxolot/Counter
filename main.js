@@ -16,6 +16,9 @@ if (Your_Best_Score.innerHTML == "301") {
 if (Your_Best_Score.innerHTML == "404") {
   Your_Best_Score.style.color = "red";
 }
+if (Your_Best_Score.innerHTML == "500") {
+  Your_Best_Score.style.color = "rgb(255, 200, 0)";
+}
 
 let leftCounter = 0;
 let rightCounter = 0;
@@ -41,6 +44,9 @@ document.addEventListener("click", function () {
   if (leftCounter == 404) {
     left.style.color = "red";
   }
+  if (leftCounter == 500) {
+    left.style.color = "rgb(255, 200, 0)";
+  }
   if (leftCounter == 1000) {
     celebrate();
   }
@@ -60,6 +66,8 @@ document.addEventListener("click", function () {
     Your_Best_Score.style.color = "orange";
   } else if (localStorage.getItem("Best Score") == 404) {
     Your_Best_Score.style.color = "red";
+  } else if (localStorage.getItem("Best Score") == 500) {
+    Your_Best_Score.style.color = "rgb(255, 200, 0)";
   } else {
     Your_Best_Score.style.color = "white";
   }
@@ -83,6 +91,9 @@ document.addEventListener("contextmenu", event => {
   if (rightCounter == 404) {
     right.style.color = "red";
   }
+  if (rightCounter == 500) {
+    right.style.color = "rgb(255, 200, 0)";
+  }
   if (rightCounter == 1000) {
     celebrate();
   }
@@ -96,12 +107,14 @@ document.addEventListener("contextmenu", event => {
     localStorage.setItem("Best Score", bigger_number);
     Your_Best_Score.innerText = localStorage.getItem("Best Score");
   }
-  if (Your_Best_Score.innerHTML == 200) {
+  if (localStorage.getItem("Best Score") == 200) {
     Your_Best_Score.style.color = "green";
   } else if (localStorage.getItem("Best Score") == 301) {
     Your_Best_Score.style.color = "orange";
-  } else if (Your_Best_Score.innerHTML == 404) {
+  } else if (localStorage.getItem("Best Score") == 404) {
     Your_Best_Score.style.color = "red";
+  } else if (localStorage.getItem("Best Score") == 500) {
+    Your_Best_Score.style.color = "rgb(255, 200, 0)";
   } else {
     Your_Best_Score.style.color = "white";
   }
