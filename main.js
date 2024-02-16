@@ -1,124 +1,72 @@
 const left = document.querySelector(".left");
 const right = document.querySelector(".right");
-const h1 = document.querySelector(".h1");
 const Your_Best_Score = document.querySelector(".Your-Best-Score");
-var span = document.querySelector("span");
-Your_Best_Score.innerHTML = localStorage.getItem("Best Score");
-if (localStorage.getItem("Best Score") == null) {
-  Your_Best_Score.innerHTML = "";
-}
-if (Your_Best_Score.innerHTML == "200") {
-  Your_Best_Score.style.color = "green";
-}
-if (Your_Best_Score.innerHTML == "301") {
-  Your_Best_Score.style.color = "orange";
-}
-if (Your_Best_Score.innerHTML == "404") {
-  Your_Best_Score.style.color = "red";
-}
-if (Your_Best_Score.innerHTML == "500") {
-  Your_Best_Score.style.color = "rgb(255, 200, 0)";
-}
 
 let leftCounter = 0;
 let rightCounter = 0;
-let left_color = 30;
-let right_color = 30;
-let left_fontSize = 17;
-let right_fontSize = 17;
 let bigger_number = 0;
+let spacePressed = false; // Flag to track space key press
 
-document.addEventListener("click", function () {
-  left_color += 1;
-  leftCounter += 1;
-  left.innerHTML = leftCounter;
-  left.style.fontSize = `${(left_fontSize += 1)}px`;
-  left.style.color = `rgb(${left_color},${left_color},${left_color})`;
-  console.log("Left click:", leftCounter);
-  if (leftCounter == 200) {
-    left.style.color = "green";
+// Retrieve best score from localStorage and update UI
+let bestScore = localStorage.getItem("Best Score");
+Your_Best_Score.innerHTML = bestScore || "";
+const colorMap = { 200: "green", 301: "orange", 404: "red", 500: "rgb(255, 200, 0)" };
+Your_Best_Score.style.color = colorMap[bestScore] || "white";
+
+// Event listener for mouse clicks and space key press
+document.addEventListener("click", handleClick);
+document.addEventListener("contextmenu", handleClick);
+document.addEventListener("keydown", handleSpacePress);
+document.addEventListener("keyup", handleSpacePress); // Add keyup event listener
+
+function handleClick(event) {
+  event.preventDefault(); // Prevent default behavior
+
+  if (event.type === "click") {
+    leftCounter++;
+    updateCounter(left, leftCounter);
+  } else if (event.type === "contextmenu") {
+    rightCounter++;
+    updateCounter(right, rightCounter);
   }
-  if (leftCounter == 301) {
-    left.style.color = "orange";
+}
+
+function handleSpacePress(event) {
+  if (event.key === " ") {
+    event.preventDefault(); // Prevent default space key behavior
+    if (!spacePressed) { // Check if space key is not already pressed
+      spacePressed = true;
+      leftCounter++;
+      updateCounter(left, leftCounter);
+    }
   }
-  if (leftCounter == 404) {
-    left.style.color = "red";
+  
+  if (event.type === "keyup" && event.key === " ") {
+    spacePressed = false; // Reset the spacePressed flag when space key is released
   }
-  if (leftCounter == 500) {
-    left.style.color = "rgb(255, 200, 0)";
-  }
-  if (leftCounter == 1000) {
+}
+
+function updateCounter(element, counter) {
+  // Update counter UI
+  element.innerHTML = counter;
+  element.style.fontSize = `${counter + 17}px`;
+
+  // Update counter color based on its value
+  if (counter === 1000) {
     celebrate();
-  }
-
-  if (leftCounter < localStorage.getItem("Best Score")) {
-  } else if (
-    leftCounter > localStorage.getItem("Best Score") ||
-    rightCounter < leftCounter
-  ) {
-    bigger_number = leftCounter;
-    localStorage.setItem("Best Score", bigger_number);
-    Your_Best_Score.innerText = localStorage.getItem("Best Score");
-  }
-  if (localStorage.getItem("Best Score") == 200) {
-    Your_Best_Score.style.color = "green";
-  } else if (localStorage.getItem("Best Score") == 301) {
-    Your_Best_Score.style.color = "orange";
-  } else if (localStorage.getItem("Best Score") == 404) {
-    Your_Best_Score.style.color = "red";
-  } else if (localStorage.getItem("Best Score") == 500) {
-    Your_Best_Score.style.color = "rgb(255, 200, 0)";
   } else {
-    Your_Best_Score.style.color = "white";
-  }
-});
-
-document.addEventListener("contextmenu", event => {
-  event.preventDefault();
-  rightCounter += 1;
-  right_color += 1;
-  right.innerHTML = rightCounter;
-  right.style.fontSize = `${(right_fontSize += 1)}px`;
-  right.style.color = `rgb(${right_color},${right_color},${right_color})`;
-
-  console.log("Right click:", rightCounter);
-  if (rightCounter == 200) {
-    right.style.color = "green";
-  }
-  if (rightCounter == 301) {
-    right.style.color = "orange";
-  }
-  if (rightCounter == 404) {
-    right.style.color = "red";
-  }
-  if (rightCounter == 500) {
-    right.style.color = "rgb(255, 200, 0)";
-  }
-  if (rightCounter == 1000) {
-    celebrate();
+    const color = colorMap[counter] || `rgb(${counter + 30},${counter + 30},${counter + 30})`;
+    element.style.color = color;
   }
 
-  if (rightCounter < localStorage.getItem("Best Score")) {
-  } else if (
-    rightCounter > localStorage.getItem("Best Score") ||
-    rightCounter > leftCounter
-  ) {
-    bigger_number = rightCounter;
-    localStorage.setItem("Best Score", bigger_number);
-    Your_Best_Score.innerText = localStorage.getItem("Best Score");
+  // Update best score if necessary
+  if (counter >= bestScore) {
+    bestScore = counter;
+    localStorage.setItem("Best Score", bestScore);
+    Your_Best_Score.innerText = bestScore;
+    Your_Best_Score.style.color = colorMap[bestScore] || "white";
   }
-  if (localStorage.getItem("Best Score") == 200) {
-    Your_Best_Score.style.color = "green";
-  } else if (localStorage.getItem("Best Score") == 301) {
-    Your_Best_Score.style.color = "orange";
-  } else if (localStorage.getItem("Best Score") == 404) {
-    Your_Best_Score.style.color = "red";
-  } else if (localStorage.getItem("Best Score") == 500) {
-    Your_Best_Score.style.color = "rgb(255, 200, 0)";
-  } else {
-    Your_Best_Score.style.color = "white";
-  }
-});
+}
 
 function celebrate() {
   var defaults = {
