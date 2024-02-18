@@ -1,16 +1,20 @@
+import { celebrate } from "./special_codes.js";
 const left = document.querySelector(".left");
 const right = document.querySelector(".right");
 const Your_Best_Score = document.querySelector(".Your-Best-Score");
 
 let leftCounter = 0;
 let rightCounter = 0;
-let bigger_number = 0;
 let spacePressed = false; // Flag to track space key press
 
-// Retrieve best score from localStorage and update UI
 let bestScore = localStorage.getItem("Best Score");
 Your_Best_Score.innerHTML = bestScore || "";
-const colorMap = { 200: "green", 301: "orange", 404: "red", 500: "rgb(255, 200, 0)" };
+const colorMap = {
+  200: "green",
+  301: "orange",
+  404: "red",
+  500: "rgb(255, 200, 0)",
+};
 Your_Best_Score.style.color = colorMap[bestScore] || "white";
 
 // Event listener for mouse clicks and space key press
@@ -34,13 +38,14 @@ function handleClick(event) {
 function handleSpacePress(event) {
   if (event.key === " ") {
     event.preventDefault(); // Prevent default space key behavior
-    if (!spacePressed) { // Check if space key is not already pressed
+    if (!spacePressed) {
+      // Check if space key is not already pressed
       spacePressed = true;
       leftCounter++;
       updateCounter(left, leftCounter);
     }
   }
-  
+
   if (event.type === "keyup" && event.key === " ") {
     spacePressed = false; // Reset the spacePressed flag when space key is released
   }
@@ -55,7 +60,9 @@ function updateCounter(element, counter) {
   if (counter === 1000) {
     celebrate();
   } else {
-    const color = colorMap[counter] || `rgb(${counter + 30},${counter + 30},${counter + 30})`;
+    const color =
+      colorMap[counter] ||
+      `rgb(${counter + 30},${counter + 30},${counter + 30})`;
     element.style.color = color;
   }
 
@@ -66,33 +73,4 @@ function updateCounter(element, counter) {
     Your_Best_Score.innerText = bestScore;
     Your_Best_Score.style.color = colorMap[bestScore] || "white";
   }
-}
-
-function celebrate() {
-  var defaults = {
-    spread: 360,
-    ticks: 150,
-    gravity: 0,
-    decay: 0.94,
-    startVelocity: 35,
-    particleCount: 50,
-  };
-
-  function shoot() {
-    confetti({
-      ...defaults,
-      scalar: 1.2,
-      shapes: ["star"],
-    });
-
-    confetti({
-      ...defaults,
-      scalar: 0.75,
-      shapes: ["circle"],
-    });
-  }
-
-  setTimeout(shoot, 0);
-  setTimeout(shoot, 100);
-  setTimeout(shoot, 200);
 }
