@@ -59,6 +59,7 @@ function updateCounter(element, counter) {
   // Update counter color based on its value
   if (counter === 1000) {
     celebrate();
+    left.classList.add("Gradient-animation")
   } else {
     const color =
       colorMap[counter] ||

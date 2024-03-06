@@ -34,3 +34,40 @@ p {
   top: -1%;
   right: 2%;
 }
+/* Text gradient animation */
+
+.Gradient-animation {
+  --bg-size: 400%;
+  --color-red: hsl(0, 100%, 50%);
+  --color-orange: hsl(35, 100%, 50%);
+  --color-yellow: hsl(60, 100%, 50%);
+  --color-green: hsl(120, 100%, 50%);
+  --color-light-blue: hsl(193, 100%, 50%);
+  --color-blue: hsl(240, 100%, 50%);
+  --color-purple: hsl(287, 100%, 50%);
+  background: linear-gradient(
+      90deg,
+      var(--color-red),
+      var(--color-orange),
+      var(--color-yellow),
+      var(--color-green),
+      var(--color-light-blue),
+      var(--color-blue),
+      var(--color-purple),
+      var(--color-red)
+    )
+    0 0 / var(--bg-size) 100%;
+  color: transparent !important;
+  background-clip: text;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .Gradient-animation {
+    animation: move-bg 75s linear infinite;
+  }
+  @keyframes move-bg {
+    to {
+      background-position: var(--bg-size) 0;
+    }
+  }
+}
