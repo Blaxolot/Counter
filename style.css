@@ -6,17 +6,15 @@ body {
   height: 100vh;
   margin: 0;
 }
-
-h1 {
+* {
   user-select: none;
+}
+h1 {
   font-size: 0px;
   font-family: "Quicksand", sans-serif;
   margin: 0;
   transition: font-size 100ms;
   transition: color 500ms;
-}
-.right {
-  margin-left: 10px;
 }
 
 .counter {
@@ -26,7 +24,6 @@ h1 {
 }
 
 p {
-  user-select: none;
   position: absolute;
   font-family: "Nunito", sans-serif;
   font-size: 30px;

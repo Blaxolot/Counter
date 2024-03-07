@@ -32,6 +32,7 @@ function handleClick(event) {
   } else if (event.type === "contextmenu") {
     rightCounter++;
     updateCounter(right, rightCounter);
+    right.style.marginLeft = "8px";
   }
 }
 
@@ -54,12 +55,12 @@ function handleSpacePress(event) {
 function updateCounter(element, counter) {
   // Update counter UI
   element.innerHTML = counter;
-  element.style.fontSize = `${counter + 17}px`;
+  element.style.fontSize = `${counter * 0.8 + 17}px`;
 
   // Update counter color based on its value
   if (counter === 1000) {
     celebrate();
-    left.classList.add("Gradient-animation")
+    left.classList.add("Gradient-animation");
   } else {
     const color =
       colorMap[counter] ||
