@@ -4,7 +4,6 @@
     <title>Counter</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="main.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js"></script>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -21,6 +20,14 @@
       <h1 class="left">0</h1>
       <h1 class="right">0</h1>
     </div>
-    <p>Your Best Score: <span class="Your-Best-Score"></span></p>
+    <p class="global">
+      Global Best Score: <span class="Global-Best-Score"></span>
+    </p>
+    <p class="best">Your Best Score: <span class="Your-Best-Score"></span></p>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script defer src="main.js" type="module"></script>
   </body>
 </html>
