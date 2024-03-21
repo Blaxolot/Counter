@@ -1,19 +1,4 @@
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCK5ooOuggg22vpFlPzLY1cyHjEAIKFseQ",
-  authDomain: "fir-test-73f1d.firebaseapp.com",
-  databaseURL: "https://fir-test-73f1d-default-rtdb.firebaseio.com",
-  projectId: "fir-test-73f1d",
-  storageBucket: "fir-test-73f1d.appspot.com",
-  messagingSenderId: "460440151772",
-  appId: "1:460440151772:web:734e44f71f56906e15f619",
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-// Get a reference to the Firebase Realtime Database
-const database = firebase.database();
+import { celebrate, database } from "./special_codes.js";
 
 const left = document.querySelector(".left");
 const right = document.querySelector(".right");
@@ -35,7 +20,7 @@ const colorMap = {
 Your_Best_Score.style.color = colorMap[bestScore] || "white";
 
 // Retrieve the global best score from the database
-let globalBestScore = 0;
+let globalBestScore;
 const globalBestScoreRef = database.ref("globalBestScore");
 globalBestScoreRef.on("value", snapshot => {
   const prevGlobalBestScore = globalBestScore;
@@ -47,7 +32,7 @@ globalBestScoreRef.on("value", snapshot => {
     Global_Best_Score.classList.add("highlight");
     setTimeout(() => {
       Global_Best_Score.classList.remove("highlight");
-    }, 1000); // Adjust the duration of the animation as needed
+    }, 1000);
   }
 });
 
@@ -95,9 +80,13 @@ function handleSpacePress(event) {
 function updateCounter(element, counter) {
   element.innerHTML = counter;
   element.style.fontSize = `${counter * 0.8 + 17}px`;
-
-  if (counter === 1000) {
+  if (leftCounter === 1000) {
     left.classList.add("Gradient-animation");
+    celebrate();
+  }
+  if (rightCounter === 1000) {
+    right.classList.add("Gradient-animation");
+    celebrate();
   } else {
     const color =
       colorMap[counter] ||
@@ -111,7 +100,7 @@ function updateCounter(element, counter) {
     Your_Best_Score.innerText = bestScore;
     Your_Best_Score.style.color = colorMap[bestScore] || "white";
   }
-  if (counter >= globalBestScore) {
+  if (counter > globalBestScore) {
     updateGlobalBestScore(counter);
   }
 }

@@ -34,7 +34,7 @@ h1 {
 }
 
 .Global-Best-Score {
-  color: rgb(52, 164, 255);
+  color: rgb(50, 160, 255);
 }
 
 .Global-Best-Score.highlight {
@@ -53,34 +53,26 @@ h1 {
 
 /* Positioning */
 .global {
-  top: -15px; /* Adjust the pixel value as needed */
+  top: -15px;
 }
 
 .best {
-  top: 25px; /* Adjust the pixel value as needed */
+  top: 25px;
 }
 
 /* Text gradient animation */
-
 .Gradient-animation {
   --bg-size: 400%;
-  --red: hsl(0, 100%, 50%);
-  --orange: hsl(35, 100%, 50%);
-  --yellow: hsl(60, 100%, 50%);
-  --green: hsl(120, 100%, 50%);
-  --light-blue: hsl(193, 100%, 50%);
-  --blue: hsl(240, 100%, 50%);
-  --purple: hsl(287, 100%, 50%);
   background: linear-gradient(
       90deg,
-      var(--red),
-      var(--orange),
-      var(--yellow),
-      var(--green),
-      var(--light-blue),
-      var(--blue),
-      var(--purple),
-      var(--red)
+      rgb(255, 0, 0),
+      rgb(255, 149, 0),
+      rgb(255, 255, 0),
+      rgb(0, 255, 0),
+      rgb(0, 200, 255),
+      rgb(0, 0, 255),
+      rgb(200, 0, 255),
+      rgb(255, 0, 0)
     )
     0 0 / var(--bg-size) 100%;
   color: transparent !important;
