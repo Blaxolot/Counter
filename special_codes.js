@@ -12,7 +12,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
-firebase.getAnalytics(app);
+const analytics = firebase.analytics(app);
 // Get a reference to the Firebase Realtime Database
 const database = firebase.database();
 
