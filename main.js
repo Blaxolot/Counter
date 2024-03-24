@@ -3,11 +3,12 @@ import { celebrate, database } from "./special_codes.js";
 const left = document.querySelector(".left");
 const right = document.querySelector(".right");
 const Your_Best_Score = document.querySelector(".Your-Best-Score");
-const Global_Best_Score = document.querySelector(".Global-Best-Score");
+const Username_input = document.querySelector(".Username_input");
 
 let leftCounter = 0;
 let rightCounter = 0;
 let spacePressed = false;
+let deviceToken = localStorage.getItem("DeviceToken");
 
 let bestScore = localStorage.getItem("Best Score") || 0;
 Your_Best_Score.innerText = bestScore;
@@ -19,30 +20,81 @@ const colorMap = {
 };
 Your_Best_Score.style.color = colorMap[bestScore] || "white";
 
-// Retrieve the global best score from the database
-let globalBestScore;
-const globalBestScoreRef = database.ref("globalBestScore");
-globalBestScoreRef.on("value", snapshot => {
-  const prevGlobalBestScore = globalBestScore;
-  globalBestScore = snapshot.val() || 0;
-  Global_Best_Score.innerText = globalBestScore;
-
-  // Highlight animation when global best score increases
-  if (globalBestScore > prevGlobalBestScore && prevGlobalBestScore > 0) {
-    Global_Best_Score.classList.add("highlight");
-    setTimeout(() => {
-      Global_Best_Score.classList.remove("highlight");
-    }, 1000);
-  }
+// Generate random device token if not present
+if (!deviceToken) {
+  deviceToken = Math.random().toString(36).substring(7);
+  localStorage.setItem("DeviceToken", deviceToken);
+}
+// Add event listener to input field
+Username_input.addEventListener("input", function (event) {
+  const inputValue = event.target.value;
+  // Save the value to localStorage
+  localStorage.setItem("username", inputValue);
+});
+Username_input.value = localStorage.getItem("username");
+// Top 5
+var Top5Ref = database.ref("Top5");
+let Top5_list = [];
+// Reading nested elements
+Top5Ref.on("value", snapshot => {
+  snapshot.forEach(childSnapshot => {
+    var childData = childSnapshot.val();
+    document.querySelector(".top_" + childSnapshot.key).innerHTML =
+      "<span>" +
+      childSnapshot.key +
+      "." +
+      "</span>" +
+      "<span class='playername'>" +
+      childData.playerName +
+      "</span>" +
+      " " +
+      "<span class='playerscore'>" +
+      childData.playerScore;
+    ("</span>");
+    Top5_list[childSnapshot.key - 1] = {
+      playerName: childData.playerName,
+      playerScore: childData.playerScore,
+      deviceToken: childData.deviceToken,
+    };
+  });
 });
 
-// Update the global best score in the database if necessary
-function updateGlobalBestScore(score) {
-  if (score > globalBestScore) {
-    globalBestScore = score;
-    globalBestScoreRef.set(globalBestScore);
-    Global_Best_Score.innerText = globalBestScore;
+// Update Top5 score list in the database if necessary
+function updateTop5Score(score, name) {
+  let Top5_copy = Top5_list.slice();
+  //Check if already in top 5 list
+  let alreadyInTop5 = false;
+  for (var i = 0; i < Top5_copy.length; i++) {
+    if (Top5_copy[i].deviceToken === deviceToken) {
+      alreadyInTop5 = true;
+      if (Top5_copy[i].playerScore < score) {
+        // Add the new score to the Top5_list array
+        Top5_copy[i] = {
+          playerName: name,
+          playerScore: score,
+          deviceToken: deviceToken,
+        };
+        break;
+      } else alreadyInTop5 = false;
+    }
   }
+  if (alreadyInTop5 !== true) {
+    // Add the new score to the Top5_list array
+    Top5_copy.push({
+      playerName: name,
+      playerScore: score,
+      deviceToken: deviceToken,
+    });
+  }
+
+  // Sort the array after populating it
+  Top5_copy.sort((a, b) => b.playerScore - a.playerScore);
+  // Keep only the top 5 scores
+  Top5_copy = Top5_copy.slice(0, 5);
+  // Update firebase Top5 scores
+  Top5_copy.forEach(function (value, index, array) {
+    Top5Ref.child(index + 1).update(value);
+  });
 }
 
 document.addEventListener("click", handleClick);
@@ -93,14 +145,11 @@ function updateCounter(element, counter) {
       `rgb(${counter + 30},${counter + 30},${counter + 30})`;
     element.style.color = color;
   }
-
-  if (counter >= bestScore) {
+  updateTop5Score(counter, Username_input.value);
+  if (counter > bestScore) {
     bestScore = counter;
     localStorage.setItem("Best Score", bestScore);
     Your_Best_Score.innerText = bestScore;
     Your_Best_Score.style.color = colorMap[bestScore] || "white";
-  }
-  if (counter > globalBestScore) {
-    updateGlobalBestScore(counter);
   }
 }

@@ -24,22 +24,12 @@ h1 {
 }
 
 /* Common styles */
-.global,
 .best {
   position: absolute;
   font-family: "Nunito", sans-serif;
   font-size: 30px;
   color: rgb(100, 100, 100);
   right: 2%;
-}
-
-.Global-Best-Score {
-  color: rgb(50, 160, 255);
-}
-
-.Global-Best-Score.highlight {
-  /* Animation styles */
-  animation: highlight 1s ease-in-out;
 }
 
 @keyframes highlight {
@@ -52,14 +42,66 @@ h1 {
 }
 
 /* Positioning */
-.global {
-  top: -15px;
-}
-
 .best {
-  top: 25px;
+  top: -20px;
 }
-
+/* Scores */
+.Scoreboard {
+  font-family: "Nunito", sans-serif;
+  color: rgb(140, 140, 140);
+  font-size: 30px;
+  position: absolute;
+  top: -20px;
+  left: 1%;
+}
+.Scores,
+.Username,
+.Username_input {
+  font-family: "Nunito", sans-serif;
+  font-size: 30px;
+  position: absolute;
+  color: white;
+  left: 1%;
+}
+.Scores span {
+  color: rgb(100, 100, 100);
+}
+.Scores .playername {
+  color: rgb(150, 150, 150);
+}
+.Scores .playerscore {
+  color: white;
+}
+.Username {
+  top: -25px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+}
+.Username_input {
+  top: 10.5px;
+  font-size: 25px;
+  color: black;
+  background-color: rgb(100, 100, 100);
+  border: 0;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 285px;
+  right: 0;
+  text-align: center;
+  width: 125px;
+  height: 28px;
+}
+.Username_input:focus {
+  outline: none;
+  outline-style: none;
+  box-shadow: none;
+  border: none !important;
+}
 /* Text gradient animation */
 .Gradient-animation {
   --bg-size: 400%;
