@@ -145,8 +145,9 @@ function updateCounter(element, counter) {
       `rgb(${counter + 30},${counter + 30},${counter + 30})`;
     element.style.color = color;
   }
-  updateTop5Score(counter, Username_input.value);
+  
   if (counter > bestScore) {
+    updateTop5Score(counter, Username_input.value);
     bestScore = counter;
     localStorage.setItem("Best Score", bestScore);
     Your_Best_Score.innerText = bestScore;
