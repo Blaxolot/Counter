@@ -4,15 +4,14 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
 }
 * {
   user-select: none;
+  margin: 0;
 }
 h1 {
   font-size: 0px;
   font-family: "Quicksand", sans-serif;
-  margin: 0;
   transition: font-size 100ms;
   transition: color 500ms;
 }
@@ -29,7 +28,8 @@ h1 {
   font-family: "Nunito", sans-serif;
   font-size: 30px;
   color: rgb(100, 100, 100);
-  right: 2%;
+  top: 8px;
+  right: 15px;
 }
 
 @keyframes highlight {
@@ -41,18 +41,14 @@ h1 {
   }
 }
 
-/* Positioning */
-.best {
-  top: -20px;
-}
 /* Scores */
 .Scoreboard {
   font-family: "Nunito", sans-serif;
   color: rgb(140, 140, 140);
   font-size: 30px;
   position: absolute;
-  top: -20px;
-  left: 1%;
+  top: 2px;
+  left: 10px;
 }
 .Scores,
 .Username,
@@ -61,7 +57,7 @@ h1 {
   font-size: 30px;
   position: absolute;
   color: white;
-  left: 1%;
+  left: 10px;
 }
 .Scores span {
   color: rgb(100, 100, 100);
@@ -72,13 +68,16 @@ h1 {
 .Scores .playerscore {
   color: white;
 }
-.Username {
-  top: -25px;
+.Username,
+.Username_input {
   margin-left: auto;
   margin-right: auto;
-  left: 0;
-  right: 0;
   text-align: center;
+}
+.Username {
+  top: 5px;
+  left: 0;
+  right: 139px;
   color: white;
 }
 .Username_input {
@@ -88,11 +87,8 @@ h1 {
   background-color: rgb(100, 100, 100);
   border: 0;
   border-radius: 2px;
-  margin-left: auto;
-  margin-right: auto;
-  left: 285px;
+  left: 150px;
   right: 0;
-  text-align: center;
   width: 125px;
   height: 28px;
 }
