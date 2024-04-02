@@ -5,15 +5,16 @@ body {
   align-items: center;
   height: 100vh;
 }
+
 * {
   user-select: none;
   margin: 0;
 }
+
 h1 {
-  font-size: 0px;
   font-family: "Quicksand", sans-serif;
-  transition: font-size 100ms;
-  transition: color 500ms;
+  font-size: 0px;
+  transition: font-size 100ms, color 500ms;
 }
 
 .counter {
@@ -32,20 +33,11 @@ h1 {
   right: 15px;
 }
 
-@keyframes highlight {
-  0% {
-    background-color: yellow;
-  }
-  100% {
-    background-color: transparent;
-  }
-}
-
 /* Scores */
 .Scoreboard {
   font-family: "Nunito", sans-serif;
-  color: rgb(140, 140, 140);
   font-size: 30px;
+  color: rgb(140, 140, 140);
   position: absolute;
   top: 2px;
   left: 10px;
@@ -56,10 +48,10 @@ h1 {
   font-family: "Nunito", sans-serif;
   font-size: 30px;
   position: absolute;
-  color: white;
+  color: rgb(100, 100, 100);
   left: 10px;
 }
-.Scores span {
+.Scores {
   color: rgb(100, 100, 100);
 }
 .Scores .playername {
@@ -70,15 +62,13 @@ h1 {
 }
 .Username,
 .Username_input {
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   text-align: center;
 }
 .Username {
   top: 5px;
   left: 0;
   right: 139px;
-  color: white;
 }
 .Username_input {
   top: 10.5px;
@@ -94,7 +84,6 @@ h1 {
 }
 .Username_input:focus {
   outline: none;
-  outline-style: none;
   box-shadow: none;
   border: none !important;
 }
@@ -115,6 +104,63 @@ h1 {
     0 0 / var(--bg-size) 100%;
   color: transparent !important;
   background-clip: text;
+}
+@media only screen and (max-width: 450px) {
+  body {
+    overflow: hidden;
+  }
+
+  .Scoreboard {
+    top: 30px;
+    text-indent: -9999px;
+    line-height: 0;
+  }
+
+  .Scoreboard::after {
+    content: "Top 5:";
+    text-indent: 0;
+    display: block;
+    line-height: initial;
+  }
+
+  .Scoreboard,
+  .Scores {
+    font-size: 28px;
+    left: 5px;
+  }
+
+  .top_1 {
+    top: 60px !important;
+  }
+  .top_2 {
+    top: 90px !important;
+  }
+  .top_3 {
+    top: 120px !important;
+  }
+  .top_4 {
+    top: 150px !important;
+  }
+  .top_5 {
+    top: 180px !important;
+  }
+
+  .best,
+  .Username {
+    font-size: 28px;
+    top: 30px;
+    right: 5px;
+  }
+
+  .Username {
+    font-size: 28px;
+    top: 0px;
+    right: 135px;
+  }
+  .Username_input {
+    top: 5px;
+    left: 135px;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

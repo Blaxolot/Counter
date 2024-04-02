@@ -25,13 +25,9 @@ if (!deviceToken) {
   deviceToken = Math.random().toString(36).substring(7);
   localStorage.setItem("DeviceToken", deviceToken);
 }
-// Add event listener to input field
-Username_input.addEventListener("input", function (event) {
-  const inputValue = event.target.value;
-  // Save the value to localStorage
-  localStorage.setItem("username", inputValue);
-});
-Username_input.value = localStorage.getItem("username");
+// Set initial value from localStorage and save changes on input
+Username_input.value = localStorage.username || "";
+Username_input.oninput = () => (localStorage.username = Username_input.value);
 // Top 5
 var Top5Ref = database.ref("Top5");
 let Top5_list = [];
@@ -40,17 +36,15 @@ Top5Ref.on("value", snapshot => {
   snapshot.forEach(childSnapshot => {
     var childData = childSnapshot.val();
     document.querySelector(".top_" + childSnapshot.key).innerHTML =
-      "<span>" +
       childSnapshot.key +
       "." +
-      "</span>" +
       "<span class='playername'>" +
       childData.playerName +
       "</span>" +
       " " +
       "<span class='playerscore'>" +
-      childData.playerScore;
-    ("</span>");
+      childData.playerScore +
+      "</span>";
     Top5_list[childSnapshot.key - 1] = {
       playerName: childData.playerName,
       playerScore: childData.playerScore,
@@ -145,7 +139,7 @@ function updateCounter(element, counter) {
       `rgb(${counter + 30},${counter + 30},${counter + 30})`;
     element.style.color = color;
   }
-  
+
   if (counter > bestScore) {
     updateTop5Score(counter, Username_input.value);
     bestScore = counter;
