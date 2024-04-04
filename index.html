@@ -4,11 +4,33 @@
     <title>Counter</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Nunito&display=block"
-      rel="stylesheet" />
+    <style>
+      /* Nunito */
+      @font-face {
+        font-family: "Nunito";
+        font-style: normal;
+        font-weight: 400;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/s/nunito/v26/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshdTQ3j6zbXWjgeg.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+          U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      /* Quicksand */
+      @font-face {
+        font-family: "Quicksand";
+        font-style: normal;
+        font-weight: 700;
+        font-display: block;
+        src: url(https://fonts.gstatic.com/s/quicksand/v31/6xKtdSZaM9iE8KbpRA_hK1QNYuDyPw.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+          U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
   </head>
   <body>
     <div class="counter">
@@ -27,9 +49,23 @@
     <p class="Username">Username:</p>
     <input class="Username_input" maxlength="13" type="text" />
     <!-- imports -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
     <script defer src="main.js" type="module"></script>
+    <script>
+      setTimeout(function () {
+        var script = document.createElement("script");
+        script.src =
+          "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js";
+        document.head.appendChild(script);
+      }, 8000); // 5000 milliseconds = 5 seconds
+    </script>
   </body>
 </html>
