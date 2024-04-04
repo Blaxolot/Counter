@@ -38,11 +38,11 @@ Top5Ref.on("value", snapshot => {
     document.querySelector(".top_" + childSnapshot.key).innerHTML =
       childSnapshot.key +
       "." +
-      "<span class='playername'>" +
+      "<span class='player_name'>" +
       childData.playerName +
       "</span>" +
       " " +
-      "<span class='playerscore'>" +
+      "<span class='player_score'>" +
       childData.playerScore +
       "</span>";
     Top5_list[childSnapshot.key - 1] = {

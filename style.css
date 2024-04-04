@@ -54,10 +54,10 @@ h1 {
 .Scores {
   color: rgb(100, 100, 100);
 }
-.Scores .playername {
+.Scores .player_name {
   color: rgb(150, 150, 150);
 }
-.Scores .playerscore {
+.Scores .player_score {
   color: white;
 }
 .Username,
