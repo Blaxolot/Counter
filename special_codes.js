@@ -12,7 +12,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
 firebase.analytics(app);
-firebase.getPerformance(app);
+firebase.performance(app);
 // Get a reference to the Firebase Realtime Database
 const database = firebase.database();
 function celebrate() {
