@@ -1,71 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Counter</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      /* Nunito */
-      @font-face {
-        font-family: "Nunito";
-        font-style: normal;
-        font-weight: 400;
-        font-display: block;
-        src: url(https://fonts.gstatic.com/s/nunito/v26/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshdTQ3j6zbXWjgeg.woff2)
-          format("woff2");
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
-          U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-      /* Quicksand */
-      @font-face {
-        font-family: "Quicksand";
-        font-style: normal;
-        font-weight: 700;
-        font-display: block;
-        src: url(https://fonts.gstatic.com/s/quicksand/v31/6xKtdSZaM9iE8KbpRA_hK1QNYuDyPw.woff2)
-          format("woff2");
-        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
-          U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="counter">
-      <h1 class="left">0</h1>
-      <h1 class="right">0</h1>
-    </div>
-    <p class="best">Your Best Score: <span class="Your-Best-Score"></span></p>
-    <!-- Scoreboard -->
-    <p class="Scoreboard">Top 5 scores:</p>
-    <p class="Scores top_1" style="top: 35px">1.</p>
-    <p class="Scores top_2" style="top: 70px">2.</p>
-    <p class="Scores top_3" style="top: 105px">3.</p>
-    <p class="Scores top_4" style="top: 140px">4.</p>
-    <p class="Scores top_5" style="top: 175px">5.</p>
-    <!-- Username -->
-    <p class="Username">Username:</p>
-    <input class="Username_input" maxlength="13" type="text" />
-    <!-- imports -->
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script
-      defer
-      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
-    <script defer src="main.js" type="module"></script>
-    <script>
-      setTimeout(function () {
-        var script = document.createElement("script");
-        script.src =
-          "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js";
-        document.head.appendChild(script);
-      }, 8000); // 5000 milliseconds = 5 seconds
-    </script>
-  </body>
+<head>
+  <title>Counter</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Nunito */
+    @font-face {
+      font-family: "Nunito";
+      font-style: normal;
+      font-weight: 400;
+      font-display: block;
+      src: url(https://fonts.gstatic.com/s/nunito/v26/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshdTQ3j6zbXWjgeg.woff2) format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    /* Quicksand */
+    @font-face {
+      font-family: "Quicksand";
+      font-style: normal;
+      font-weight: 700;
+      font-display: block;
+      src: url(https://fonts.gstatic.com/s/quicksand/v31/6xKtdSZaM9iE8KbpRA_hK1QNYuDyPw.woff2) format("woff2");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
+        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+  </style>
+</head>
+<body>
+  <div class="counter">
+    <h1 class="left">0</h1>
+    <h1 class="right">0</h1>
+  </div>
+  <p class="best">Your Best Score: <span class="Your-Best-Score"></span></p>
+  <!-- Scoreboard -->
+  <p class="Scoreboard">Top 5 scores:</p>
+  <p class="Scores top_1" style="top: 35px">1.</p>
+  <p class="Scores top_2" style="top: 70px">2.</p>
+  <p class="Scores top_3" style="top: 105px">3.</p>
+  <p class="Scores top_4" style="top: 140px">4.</p>
+  <p class="Scores top_5" style="top: 175px">5.</p>
+  <!-- Username -->
+  <p class="Username">Username:</p>
+  <input class="Username_input" maxlength="13" type="text" />
+  <!-- imports -->
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-performance.js"></script>
+  <script defer src="main.js" type="module"></script>
+  <script>
+    setTimeout(function () {
+      var script = document.createElement("script");
+      script.src =
+        "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js";
+      document.head.appendChild(script);
+    }, 8000);
+  </script>
+</body>
 </html>

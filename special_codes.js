@@ -7,15 +7,14 @@ const firebaseConfig = {
   storageBucket: "fir-test-73f1d.appspot.com",
   messagingSenderId: "460440151772",
   appId: "1:460440151772:web:734e44f71f56906e15f619",
-  measurementId: "G-WGJLB375YB"
+  measurementId: "G-WGJLB375YB",
 };
-
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
-const analytics = firebase.analytics(app);
+firebase.analytics(app);
+firebase.getPerformance(app);
 // Get a reference to the Firebase Realtime Database
 const database = firebase.database();
-
 function celebrate() {
   var defaults = {
     spread: 360,
@@ -44,4 +43,4 @@ function celebrate() {
   setTimeout(shoot, 100);
   setTimeout(shoot, 200);
 }
-export { celebrate,database };
+export { celebrate, database };
