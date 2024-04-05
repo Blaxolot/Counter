@@ -39,25 +39,23 @@
   <p class="best">Your Best Score: <span class="Your-Best-Score"></span></p>
   <!-- Scoreboard -->
   <p class="Scoreboard">Top 5 scores:</p>
-  <p class="Scores top_1" style="top: 35px">1.</p>
-  <p class="Scores top_2" style="top: 70px">2.</p>
-  <p class="Scores top_3" style="top: 105px">3.</p>
-  <p class="Scores top_4" style="top: 140px">4.</p>
-  <p class="Scores top_5" style="top: 175px">5.</p>
+  <p class="Scores" id="top_1" style="top: 35px">1.</p>
+  <p class="Scores" id="top_2" style="top: 70px">2.</p>
+  <p class="Scores" id="top_3" style="top: 105px">3.</p>
+  <p class="Scores" id="top_4" style="top: 140px">4.</p>
+  <p class="Scores" id="top_5" style="top: 175px">5.</p>
   <!-- Username -->
   <p class="Username">Username:</p>
-  <input class="Username_input" maxlength="13" type="text" />
+  <input maxlength="13" type="text" />
   <!-- imports -->
   <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-performance.js"></script>
   <script defer src="main.js" type="module"></script>
   <script>
     setTimeout(function () {
       var script = document.createElement("script");
-      script.src =
-        "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js";
+      script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js";
       document.head.appendChild(script);
     }, 8000);
   </script>

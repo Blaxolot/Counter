@@ -3,7 +3,7 @@ import { celebrate, database } from "./special_codes.js";
 const left = document.querySelector(".left");
 const right = document.querySelector(".right");
 const Your_Best_Score = document.querySelector(".Your-Best-Score");
-const Username_input = document.querySelector(".Username_input");
+const Username_input = document.querySelector("input");
 
 let leftCounter = 0;
 let rightCounter = 0;
@@ -29,13 +29,13 @@ if (!deviceToken) {
 Username_input.value = localStorage.username || "";
 Username_input.oninput = () => (localStorage.username = Username_input.value);
 // Top 5
-var Top5Ref = database.ref("Top5");
+var Top5 = database.ref("Top5");
 let Top5_list = [];
 // Reading nested elements
-Top5Ref.on("value", snapshot => {
+Top5.on("value", snapshot => {
   snapshot.forEach(childSnapshot => {
     var childData = childSnapshot.val();
-    document.querySelector(".top_" + childSnapshot.key).innerHTML =
+    document.querySelector("#top_" + childSnapshot.key).innerHTML =
       childSnapshot.key +
       "." +
       "<span class='player_name'>" +
@@ -56,7 +56,7 @@ Top5Ref.on("value", snapshot => {
 // Update Top5 score list in the database if necessary
 function updateTop5Score(score, name) {
   let Top5_copy = Top5_list.slice();
-  //Check if already in top 5 list
+  // Check if already in top 5 list
   let alreadyInTop5 = false;
   for (var i = 0; i < Top5_copy.length; i++) {
     if (Top5_copy[i].deviceToken === deviceToken) {
@@ -87,7 +87,7 @@ function updateTop5Score(score, name) {
   Top5_copy = Top5_copy.slice(0, 5);
   // Update firebase Top5 scores
   Top5_copy.forEach(function (value, index, array) {
-    Top5Ref.child(index + 1).update(value);
+    Top5.child(index + 1).update(value);
   });
 }
 
