@@ -126,11 +126,11 @@ function handleSpacePress(event) {
 function updateCounter(element, counter) {
   element.innerHTML = counter;
   element.style.fontSize = `${counter * 0.8 + 17}px`;
-  if (leftCounter === 1000) {
+  if (leftCounter == 1000) {
     left.classList.add("Gradient-animation");
     celebrate();
   }
-  if (rightCounter === 1000) {
+  if (rightCounter == 1000) {
     right.classList.add("Gradient-animation");
     celebrate();
   } else {

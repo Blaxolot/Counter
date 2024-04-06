@@ -47,8 +47,10 @@
   <p class="Scores" id="top_4" style="top: 140px">4.</p>
   <p class="Scores" id="top_5" style="top: 175px">5.</p>
   <!-- Username -->
-  <p class="Username">Username:</p>
-  <input maxlength="13" type="text" />
+  <div class="Username_div">
+    <p class="Username">Username:</p>
+    <input maxlength="13" type="text" />
+  </div>
   <!-- imports -->
   <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
@@ -59,7 +61,7 @@
       var script = document.createElement("script");
       script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js";
       document.head.appendChild(script);
-    }, 8000);
+    }, 5000);
   </script>
 </body>
 </html>
