@@ -34,32 +34,30 @@
   <meta name="google-site-verification" content="7W9uFHmidAsucMkCvSm1whYr36za-is5ew2sFIWXwgI" />
 </head>
 <body>
-  <div class="counter">
-    <h1 class="left">0</h1>
-    <h1 class="right">0</h1>
-  </div>
-  <p class="best">Your Best Score: <span class="Your-Best-Score"></span></p>
+  <h1 id="left">0</h1>
+  <h1 id="right">0</h1>
+  <p id="best">Your Best Score: <span id="Your_Best_Score"></span></p>
   <!-- Scoreboard -->
-  <p class="Scoreboard">Top 5 scores:</p>
+  <p id="Scoreboard">Top 5 scores:</p>
   <p class="Scores" id="top_1" style="top: 35px">1.</p>
   <p class="Scores" id="top_2" style="top: 70px">2.</p>
   <p class="Scores" id="top_3" style="top: 105px">3.</p>
   <p class="Scores" id="top_4" style="top: 140px">4.</p>
   <p class="Scores" id="top_5" style="top: 175px">5.</p>
   <!-- Username -->
-  <div class="Username_div">
-    <p class="Username">Username:</p>
+  <div id="Username_div">
+    <p id="Username">Username:</p>
     <input maxlength="13" type="text" />
   </div>
   <!-- imports -->
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
   <script defer src="main.js" type="module"></script>
   <script>
     setTimeout(function () {
       var script = document.createElement("script");
-      script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js";
+      script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js";
       document.head.appendChild(script);
     }, 5000);
   </script>

@@ -19,14 +19,15 @@ h1 {
   transition: font-size 100ms, color 500ms;
 }
 
-.counter,
-.Username_div {
+#Username_div {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 5px;
 }
 
-.best {
+#best {
   position: absolute;
   color: rgb(100, 100, 100);
   top: 8px;
@@ -34,7 +35,7 @@ h1 {
 }
 
 /* Scores */
-.Scoreboard {
+#Scoreboard {
   color: rgb(140, 140, 140);
   position: absolute;
   top: 2px;
@@ -55,12 +56,7 @@ h1 {
   color: white;
 }
 
-.Username_div {
-  position: absolute;
-  top: 5px;
-}
-
-.Username {
+#Username {
   color: rgb(100, 100, 100);
 }
 
@@ -86,7 +82,7 @@ input:focus {
   background: linear-gradient(
       90deg,
       rgb(255, 0, 0),
-      rgb(255, 149, 0),
+      rgb(255, 150, 0),
       rgb(255, 255, 0),
       rgb(0, 255, 0),
       rgb(0, 200, 255),
@@ -97,6 +93,7 @@ input:focus {
     0 0 / var(--bg-size) 100%;
   color: transparent !important;
   background-clip: text;
+  -webkit-background-clip: text;
   animation: move-bg 75s linear infinite;
 }
 
@@ -113,31 +110,31 @@ input:focus {
     top: 30px;
   }
 
-  .Scoreboard {
+  #Scoreboard {
     top: 30px;
     text-indent: -9999px;
     line-height: 0;
   }
 
-  .Scoreboard::after {
+  #Scoreboard::after {
     content: "Top 5:";
     text-indent: 0;
     display: block;
     line-height: initial;
   }
 
-  .Scoreboard,
+  #Scoreboard,
   .Scores {
     left: 5px;
   }
-  .Username_div {
+  #Username_div {
     top: 0px;
   }
-  .best,
-  .Username {
+  #best,
+  #Username {
     right: 5px;
   }
-  .best {
+  #best {
     top: 30px;
   }
   #top_1 {

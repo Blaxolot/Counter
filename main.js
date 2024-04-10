@@ -1,8 +1,8 @@
 import { celebrate, database } from "./special_codes.js";
 
-const left = document.querySelector(".left");
-const right = document.querySelector(".right");
-const Your_Best_Score = document.querySelector(".Your-Best-Score");
+const left = document.querySelector("#left");
+const right = document.querySelector("#right");
+const Your_Best_Score = document.querySelector("#Your_Best_Score");
 const Username_input = document.querySelector("input");
 
 let leftCounter = 0;
@@ -59,7 +59,7 @@ function updateTop5Score(score, name) {
   // Check if already in top 5 list
   let alreadyInTop5 = false;
   for (var i = 0; i < Top5_copy.length; i++) {
-    if (Top5_copy[i].deviceToken === deviceToken) {
+    if (Top5_copy[i].deviceToken == deviceToken) {
       alreadyInTop5 = true;
       if (Top5_copy[i].playerScore < score) {
         // Add the new score to the Top5_list array
@@ -98,10 +98,10 @@ document.addEventListener("keyup", handleSpacePress);
 
 function handleClick(event) {
   event.preventDefault();
-  if (event.type === "click") {
+  if (event.type == "click") {
     leftCounter++;
     updateCounter(left, leftCounter);
-  } else if (event.type === "contextmenu") {
+  } else if (event.type == "contextmenu") {
     rightCounter++;
     updateCounter(right, rightCounter);
     right.style.marginLeft = "8px";
@@ -109,7 +109,7 @@ function handleClick(event) {
 }
 
 function handleSpacePress(event) {
-  if (event.key === " ") {
+  if (event.key == " ") {
     event.preventDefault();
     if (!spacePressed) {
       spacePressed = true;
@@ -118,7 +118,7 @@ function handleSpacePress(event) {
     }
   }
 
-  if (event.type === "keyup" && event.key === " ") {
+  if (event.type == "keyup" && event.key == " ") {
     spacePressed = false;
   }
 }
