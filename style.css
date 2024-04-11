@@ -8,23 +8,17 @@ body {
 }
 
 * {
+  font-family: Helvetica, sans-serif;
   font-family: "Nunito", sans-serif;
   user-select: none;
   margin: 0;
+  padding: 0;
 }
 
 h1 {
   font-family: "Quicksand", sans-serif;
   font-size: 0px;
   transition: font-size 100ms, color 500ms;
-}
-
-#Username_div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 5px;
 }
 
 #best {
@@ -56,6 +50,14 @@ h1 {
   color: white;
 }
 
+#Username_div {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 5px;
+}
+
 #Username {
   color: rgb(100, 100, 100);
 }
@@ -70,9 +72,6 @@ input {
   border-radius: 2px;
   width: 125px;
   height: 28px;
-}
-
-input:focus {
   outline: none;
 }
 

@@ -9,8 +9,8 @@ let leftCounter = 0;
 let rightCounter = 0;
 let spacePressed = false;
 let deviceToken = localStorage.getItem("DeviceToken");
-
 let bestScore = localStorage.getItem("Best Score") || 0;
+
 Your_Best_Score.innerText = bestScore;
 const colorMap = {
   200: "green",
@@ -29,26 +29,27 @@ if (!deviceToken) {
 Username_input.value = localStorage.username || "";
 Username_input.oninput = () => (localStorage.username = Username_input.value);
 // Top 5
-var Top5 = database.ref("Top5");
+const Top5 = database.ref("Top5");
 let Top5_list = [];
 // Reading nested elements
 Top5.on("value", snapshot => {
   snapshot.forEach(childSnapshot => {
-    var childData = childSnapshot.val();
-    document.querySelector("#top_" + childSnapshot.key).innerHTML =
-      childSnapshot.key +
+    const { playerName, playerScore, deviceToken } = childSnapshot.val();
+    const key = childSnapshot.key;
+    document.querySelector("#top_" + key).innerHTML =
+      key +
       "." +
       "<span class='player_name'>" +
-      childData.playerName +
+      playerName +
       "</span>" +
       " " +
       "<span class='player_score'>" +
-      childData.playerScore +
+      playerScore +
       "</span>";
     Top5_list[childSnapshot.key - 1] = {
-      playerName: childData.playerName,
-      playerScore: childData.playerScore,
-      deviceToken: childData.deviceToken,
+      playerName: playerName,
+      playerScore: playerScore,
+      deviceToken: deviceToken,
     };
   });
 });
