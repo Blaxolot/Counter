@@ -87,7 +87,7 @@ function updateTop5Score(score, name) {
   // Keep only the top 5 scores
   Top5_copy = Top5_copy.slice(0, 5);
   // Update firebase Top5 scores
-  Top5_copy.forEach(function (value, index, array) {
+  Top5_copy.forEach(function (value, index) {
     Top5.child(index + 1).update(value);
   });
 }

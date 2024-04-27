@@ -1,6 +1,6 @@
 body {
-  background-color: black;
   display: flex;
+  background-color: black;
   justify-content: center;
   align-items: center;
   font-size: 30px;
@@ -8,7 +8,6 @@ body {
 }
 
 * {
-  font-family: Helvetica, sans-serif;
   font-family: "Nunito", sans-serif;
   user-select: none;
   margin: 0;
@@ -51,8 +50,8 @@ h1 {
 }
 
 #Username_div {
-  position: absolute;
   display: flex;
+  position: absolute;
   justify-content: center;
   align-items: center;
   top: 5px;
@@ -102,7 +101,7 @@ input {
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 500px) {
   body {
     overflow: hidden;
     font-size: 28px;
