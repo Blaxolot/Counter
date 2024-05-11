@@ -124,28 +124,27 @@ function handleSpacePress(event) {
   }
 }
 
-function updateCounter(element, counter) {
-  element.innerHTML = counter;
-  element.style.fontSize = `${counter * 0.8 + 17}px`;
+function updateCounter(element, score) {
+  element.innerHTML = score;
+  element.style.fontSize = `${score * 0.8 + 17}px`;
   if (leftCounter == 1000) {
-    left.classList.add("Gradient-animation");
+    left.classList.add("Gradient_animation");
     celebrate();
   }
   if (rightCounter == 1000) {
-    right.classList.add("Gradient-animation");
+    right.classList.add("Gradient_animation");
     celebrate();
   } else {
     const color =
-      colorMap[counter] ||
-      `rgb(${counter + 30},${counter + 30},${counter + 30})`;
+      colorMap[score] || `rgb(${score + 30},${score + 30},${score + 30})`;
     element.style.color = color;
   }
 
-  if (counter > bestScore) {
-    updateTop5Score(counter, Username_input.value);
-    bestScore = counter;
+  if (score > bestScore) {
+    updateTop5Score(score, Username_input.value);
+    bestScore = score;
     localStorage.setItem("Best Score", bestScore);
-    Your_Best_Score.innerText = bestScore;
+    Your_Best_Score.innerHTML = bestScore;
     Your_Best_Score.style.color = colorMap[bestScore] || "white";
   }
 }

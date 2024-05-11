@@ -75,7 +75,7 @@ input {
 }
 
 /* Text gradient animation */
-.Gradient-animation {
+.Gradient_animation {
   --bg-size: 400%;
   background: linear-gradient(
       90deg,
@@ -88,7 +88,7 @@ input {
       rgb(200, 0, 255),
       rgb(255, 0, 0)
     )
-    0 0 / var(--bg-size) 100%;
+    0 0 / var(--bg_size) 100%;
   color: transparent !important;
   background-clip: text;
   -webkit-background-clip: text;
