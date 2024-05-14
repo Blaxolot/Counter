@@ -1,3 +1,7 @@
+body,
+html {
+  overflow: hidden;
+}
 body {
   display: flex;
   background-color: black;
@@ -88,10 +92,10 @@ input {
       rgb(200, 0, 255),
       rgb(255, 0, 0)
     )
-    0 0 / var(--bg_size) 100%;
+    0 0 / var(--bg-size) 100%;
   color: transparent !important;
-  background-clip: text;
   -webkit-background-clip: text;
+  background-clip: text;
   animation: move-bg 75s linear infinite;
 }
 
@@ -103,9 +107,7 @@ input {
 
 @media only screen and (max-width: 500px) {
   body {
-    overflow: hidden;
     font-size: 28px;
-    top: 30px;
   }
 
   #Scoreboard {
