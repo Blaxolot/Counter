@@ -1,5 +1,6 @@
 body,
 html {
+  --dark_grey: rgb(100, 100, 100);
   overflow: hidden;
 }
 body {
@@ -26,14 +27,14 @@ h1 {
 
 #best {
   position: absolute;
-  color: rgb(100, 100, 100);
+  color: var(--dark_grey);
   top: 8px;
   right: 15px;
 }
 
 /* Scores */
 #Scoreboard {
-  color: rgb(140, 140, 140);
+  color: rgb(125, 125, 125);
   position: absolute;
   top: 2px;
   left: 10px;
@@ -41,7 +42,7 @@ h1 {
 
 .Scores {
   position: absolute;
-  color: rgb(100, 100, 100);
+  color: var(--dark_grey);
   left: 10px;
 }
 
@@ -62,14 +63,14 @@ h1 {
 }
 
 #Username {
-  color: rgb(100, 100, 100);
+  color: var(--dark_grey);
 }
 
 input {
   margin-left: 5px;
   font-size: 25px;
   color: black;
-  background-color: rgb(100, 100, 100);
+  background-color: var(--dark_grey);
   text-align: center;
   border: 0;
   border-radius: 2px;

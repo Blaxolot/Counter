@@ -11,9 +11,9 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
-firebase.analytics(app);
-// Get a reference to the Firebase Realtime Database
 const database = firebase.database();
+firebase.analytics(app);
+
 function celebrate() {
   var defaults = {
     spread: 360,

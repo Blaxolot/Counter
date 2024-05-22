@@ -5,37 +5,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#000000" />
   <meta name="description" content="Counter website made by Blaxolot">
   <style>
-    /* Nunito */
     @font-face {
       font-family: "Nunito";
       font-style: normal;
       font-weight: 400;
       font-display: block;
       src: url(https://fonts.gstatic.com/s/nunito/v26/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshdTQ3j6zbXWjgeg.woff2) format("woff2");
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
-        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
     }
 
-    /* Quicksand */
     @font-face {
       font-family: "Quicksand";
       font-style: normal;
       font-weight: 700;
       font-display: block;
       src: url(https://fonts.gstatic.com/s/quicksand/v31/6xKtdSZaM9iE8KbpRA_hK1QNYuDyPw.woff2) format("woff2");
-      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC,
-        U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
     }
   </style>
   <meta name="google-site-verification" content="7W9uFHmidAsucMkCvSm1whYr36za-is5ew2sFIWXwgI" />
 </head>
 <body>
-  <h1 id="left">0</h1>
-  <h1 id="right">0</h1>
+  <h1 id="left"></h1>
+  <h1 id="right"></h1>
   <p id="best">Your Best Score: <span id="Your_Best_Score"></span></p>
   <!-- Scoreboard -->
   <p id="Scoreboard">Top 5 scores:</p>
@@ -55,8 +50,8 @@
   <script defer src="https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics-compat.js"></script>
   <script defer src="main.js" type="module"></script>
   <script>
-    setTimeout(function () {
-      var script = document.createElement("script");
+    setTimeout(() => {
+      const script = document.createElement('script');
       script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js";
       document.head.appendChild(script);
     }, 5000);
