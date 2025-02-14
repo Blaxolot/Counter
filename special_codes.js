@@ -42,4 +42,7 @@ function celebrate() {
   setTimeout(shoot, 100);
   setTimeout(shoot, 200);
 }
+document.getElementById("about").addEventListener("click", () => {
+  window.open("https://github.com/blaxolot", "_blank");
+});
 export { celebrate, database };
