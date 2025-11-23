@@ -123,7 +123,7 @@ function handleSpacePress(event) {
     spacePressed = false;
   }
 }
-
+let backgroundSet = false;
 function updateCounter(element, score) {
   element.innerHTML = score;
   element.style.fontSize = `${score * 0.8 + 17}px`;
@@ -134,11 +134,25 @@ function updateCounter(element, score) {
   if (rightCounter == 1000) {
     right.classList.add("Gradient_animation");
     celebrate();
-  } else {
-    const color =
-      colorMap[score] || `rgb(${score + 30},${score + 30},${score + 30})`;
-    element.style.color = color;
   }
+  // The Pope
+  if (score == 2137) {
+    document.body.style.backgroundImage = "url('pope.jpg')";
+    console.log("Jan Paweł II");
+  }
+  if (leftCounter == 21 && rightCounter == 37) {
+    document.body.style.backgroundImage = "url('pope.jpg')";
+    console.log("Jan Paweł II");
+    backgroundSet = true;
+  }
+  if (backgroundSet && (leftCounter !== 21 || rightCounter !== 37)) {
+    document.body.style.backgroundImage = "none";
+    document.body.style.backgroundColor = "black";
+    backgroundSet = false;
+  }
+  const color =
+    colorMap[score] || `rgb(${score + 30},${score + 30},${score + 30})`;
+  element.style.color = color;
 
   if (score > bestScore) {
     updateTop5Score(score, Username_input.value);
